@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var Person = (function(){
+    //   let _name = "_name"
+    //   function Person(name){
+    //     this[_name] = name;
+    //   }
+    //   Person.prototype.getName = function(){
+    //     return this[_name]
+    //   }
+    //   return Person;
+    // }());
+    //使用闭包
+    // var Person = (function(){
+    //   function Person(name){
+    //     this.getName = function(){
+    //       return name;
+    //     }
+    //   }
+    //   return Person;
+    // }());
+    //使用symbol
+    var Person = (function(){
+      let nameSymbol = Symbol('name')
+      function Person(name){
+        this[nameSymbol] = name;
+      }
+      Person.prototype.getName = function(){
+        return this[nameSymbol]
+      }
+      return Person;
+    }());
+  </script>
+</body>
+</html>

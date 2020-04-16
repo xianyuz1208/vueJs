@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let mySymbol = Symbol()
+    //第一种写法
+    let a = {}
+    // a[mySymbol] = 'hello'
+    //第二种写法
+    let a1 = {[mySymbol]:'hello2'}
+    //第三种写法
+    let a2 = {}
+    Object.defineProperty(a2,mySymbol,{value:'hello3'})
+  </script>
+</body>
+</html>
