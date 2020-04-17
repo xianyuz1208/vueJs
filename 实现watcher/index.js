@@ -36,7 +36,7 @@ class Vue {
 function observe(data) {
   //data是基本类型则返回
   let type = Object.prototype.toString.call(data)
-  if (type !== '[object Object]' && type !== '[object Array]') {
+  if(type !== '[object Object]' && type !== '[object Array]'){
     return
   }
   new Observer(data)
@@ -95,12 +95,16 @@ class Dep {
   }
 }
 //将需要执行的函数抽取成一个类的实例
+//设置一个watchid
+let watchId = 0;
+let watchQueue = [];
 class Watcher {
   //三个参数,vue的实例,需要对哪一个属性进行求值,回调函数
   constructor(vm, exp, cb) {
     this.vm = vm
     this.exp = exp
     this.cb = cb
+    this.id = ++watchId
     this.get()
   }
   //求值
@@ -113,7 +117,16 @@ class Watcher {
     Dep.target = null
   }
   run() {
-    //将回调函数的this改成实例的
-    this.cb.call(this.vm)
+    if(watchQueue.indexOf(this.id) !== -1){//说明已经存在队列中
+      return
+    }
+    watchQueue.push(this.id)
+    let index = watchQueue.length -1
+    Promise.resolve().then(() =>{
+      //将回调函数的this改成实例的
+      this.cb.call(this.vm)
+      // let index = watcherQueue.indexOf(this.id)
+      watchQueue.splice(index,1)
+    })
   }
 }

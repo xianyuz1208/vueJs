@@ -10,26 +10,20 @@
   <script>
     let vm = new Vue({
       data:{
-        msg:'hello world',
         message:1,
-        person:{
-          name:'ls',
-          city:{
-          cityName:'hunan'
-        }
-        },
+        name:'zq'
       },
       watch:{
         message(){
+          this.name = 'zs'
           console.log('message发生了改变1')
         }
       }
     })
-    // vm.person.name = 'zq'
-    // vm.person.city.cityName = "shenzhen"
-    vm.$watch('message',() =>{
-      console.log('message发生了改变')
-    })
+    console.log(vm.name)
+    vm.message = 4
+    vm.message = 3
+    vm.message = 5
   </script>
 </body>
 </html>
