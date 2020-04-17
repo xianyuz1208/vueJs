@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$set的实现</title>
+</head>
+<body>
+  <script src="./index.js"></script>
+  <script>
+    let vm = new Vue({
+      data:{
+        person:{
+          name:'zs'
+        }
+      },
+      watch:{
+        person(){
+          console.log('person发生了改变')
+        }
+      }
+    })
+    vm.$set(vm.person,'age',18)
+  </script>
+</body>
+</html>
