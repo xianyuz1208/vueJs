@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现数组的处理</title>
+</head>
+<body>
+  <script src="./index.js"></script>
+  <script>
+    let vm = new Vue({
+      data:{
+        hobbys:['吃饭','睡觉']
+      },
+      watch:{
+        hobbys(){
+          console.log('hobbys发生了改变')
+        }
+      }
+    })
+    vm.hobbys.push('打豆豆')
+  </script>
+</body>
+</html>
