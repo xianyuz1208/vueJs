@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现computed</title>
+</head>
+<body>
+  <!-- 计算属性是惰性的, 也就是说计算属性依赖的其他属性发生变化时,计算属性是不会立即重新计算的,要等到求值的时才会重新计算
+  -->
+  <!-- 计算属性是缓存的,如果计算属性依赖的其他属性没发生变化,即使重新对计算属性求值,也不会重新计算计算属性 -->
+  <script src="./index.js"></script>
+  <script>
+    // let vm = new Vue({
+    //   data:{
+    //     a:2,
+    //     b:3
+    //   },
+    //   computed: {
+    //     x(){
+    //       console.log('x发生了改变')
+    //       return this.a * this.b
+    //     }
+    //   },
+    // })
+    let vm = new Vue({
+      data:{
+        person:{
+          name:'zs'
+        }
+      },
+      watch: {
+        x(){
+          console.log('x监听/2号watcher')
+        }
+      },
+      computed: {
+        x(){
+          console.log('1号watcher')
+          return JSON.stringify(this.person)
+        }
+      },
+    })
+    // vm.person = {name:'ls'}
+  </script>
+</body>
+</html>
