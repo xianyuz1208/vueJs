@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现vdom</title>
+</head>
+<body>
+  <div>
+    <p>111</p>
+    <p>{{name}}</p>
+    <p>222</p>
+  </div>
+  <script src="./perser/parser.js"></script>
+  <script src="./codegen/codegen.js"></script>
+  <script src="./vnode/vnode.js"></script>
+  <script src="./index.js"></script>
+  <script>
+    let vm = new Vue({
+      el: 'div',
+      data: {
+        name: 'zs',
+        city: 'wuhan'
+      },
+    })
+  </script>
+</body>
+
+</html>
